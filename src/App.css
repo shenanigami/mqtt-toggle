@@ -1,12 +1,13 @@
 #root {
-  max-width: 1280px;
+  max-width: 940px;
+  height: 30vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-/* On / Off toggle */
-.toggle-btn {
+/* On / Off toggle for connect/disconnect to broker */
+.toggle-btn-connection {
   background-colors #b7b9ba;
   border: 2px solid #aaa;
   border-radius: 99px;
@@ -18,7 +19,7 @@
   position: relative;
 }
 
-.toggle-btn .thumb {
+.toggle-btn-connection .thumb-connection {
   height: 20px;
   width: 20px;
   background-color: #fff;
@@ -31,10 +32,46 @@
   transform: translateY(-50%);
 }
 
-.toggle-btn.toggled {
+.toggle-btn-connection.toggled_cx {
   background-color: #15b58e;
 }
 
-.toggle-btn.toggled .thumb {
+.toggle-btn-connection.toggled_cx .thumb-connection {
+  left: calc(50px - 25px);
+}
+
+/* On / Off toggle to be published to broker */
+.toggle-btn-pubsub {
+  background-colors #b7b9ba;
+  border: 2px solid #aaa;
+  border-radius: 99px;
+  width: 50px;
+  height: 28px;
+  transition: background-color 0.1s ease, border-color 0.2s ease;
+  cursor: pointer;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.748);
+  position: relative;
+  top: 50px;
+  left: -50px;
+}
+
+.toggle-btn-pubsub .thumb-pubsub {
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border-radius: 99px;
+  transform: translateX(0);
+  transition: left 0.15s ease;
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.toggle-btn-pubsub.toggled_pubsub {
+  background-color: #15b58e;
+}
+
+.toggle-btn-pubsub.toggled_pubsub .thumb-pubsub {
   left: calc(50px - 25px);
 }

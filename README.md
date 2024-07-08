@@ -14,6 +14,24 @@ that I'll write myself, or modify based on an example, or simply integrate, like
 2024-07-07
 - Create a toggle react app, following a [YT tutorial](https://youtu.be/6O_4p-H1-lY?t=95).
 
+2024-07-08
+- Make first toggle's toggle trigger connect/disconnect to mqtt broker. I used [mosquitto test broker](https://test.mosquitto.org/). Check for port and protocol.
+ - For browsers, protocols can either be ws or wss (see [browser section](https://github.com/mqttjs/MQTT.js?tab=readme-ov-file#browser) of mqttjs github readme).
+ - NOTE: mqtt broker instances that run over `mqtt://` can't be access from a browser (for later), according to this [mqttjs github issue thread](https://github.com/mqttjs/MQTT.js/issues/628).
+- The added code is likely ugly and there are better ways to do what I did, but I'm a webapp noob, not yet sure if I need to invest in webapp writing skills
+  beyond haphazard web searching.
+- Removed src/components code (first attempt at toggle that failed).
+- For the mqtt code, I used simple examples from [this](https://github.com/mqttjs/MQTT.js) mqttjs repo.
+
+Some things I learned.
+- `==` vs `===` in [this](https://stackoverflow.com/questions/5113374/javascript-check-if-variable-exists-is-defined-initialized) stackoverflow post (js).
+- multiple statements syntax for arrow functions in js, [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
+- also, had to use import instead of require, according to [mqttjs readme](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
+
+
+Next: I want to try to check for connack packet (that connection is successful) using [mqtt-packet from mqttjs](https://github.com/mqttjs/mqtt-packet).
+Next next: Deal with second toggle (pub-sub stuff).
+
 
 ## React + TypeScript + Vite
 
