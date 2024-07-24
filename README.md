@@ -17,7 +17,7 @@ that I'll write myself, or modify based on an example, or simply integrate, like
 2024-07-08
 - Make first toggle's toggle trigger connect/disconnect to mqtt broker. I used [mosquitto test broker](https://test.mosquitto.org/). Check for port and protocol.
  - For browsers, protocols can either be ws or wss (see [browser section](https://github.com/mqttjs/MQTT.js?tab=readme-ov-file#browser) of mqttjs github readme).
- - NOTE: mqtt broker instances that run over `mqtt://` can't be access from a browser (for later), according to this [mqttjs github issue thread](https://github.com/mqttjs/MQTT.js/issues/628).
+ - NOTE: mqtt broker instances that run over `mqtt://` can't be accessed from a browser (for later), according to this [mqttjs github issue thread](https://github.com/mqttjs/MQTT.js/issues/628).
 - The added code is likely ugly and there are better ways to do what I did, but I'm a webapp noob, not yet sure if I need to invest in webapp writing skills
   beyond haphazard web searching.
 - Removed src/components code (first attempt at toggle that failed).
@@ -29,8 +29,9 @@ Some things I learned.
 - also, had to use import instead of require, according to [mqttjs readme](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
 
 
-Next: I want to try to check for connack packet (that connection is successful) using [mqtt-packet from mqttjs](https://github.com/mqttjs/mqtt-packet).
-Next next: Deal with second toggle (pub-sub stuff).
+2024-07-24: After a bit of an odyssey, I stumbled upon the mqttjs's client api, specifically [event](https://github.com/mqttjs/MQTT.js?tab=readme-ov-file#event-connect) handling. For this latest commit, the goal was to get some sort of verification of successful connect/disconnect in forms of console logs. For connect, I was able to print the connack packet to the console, for disconnect I used the close event that occurs that is emitted after a disconnect.
+
+Next: Deal with second toggle (pub-sub stuff).
 
 
 ## React + TypeScript + Vite
