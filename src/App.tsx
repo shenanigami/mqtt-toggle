@@ -8,7 +8,6 @@ function App() {
   const [toggled_cx, setToggled_cx] = useState(false);
   const [toggled_pubsub, setToggled_pubsub] = useState(false);
 
-
   return (
     <div className="App">
 
@@ -35,7 +34,30 @@ function App() {
       <div className="thumb-connection"></div>
       </button>
       <button className={`toggle-btn-pubsub ${toggled_pubsub ? 'toggled_pubsub' : ""}`}
-      onClick={() => setToggled_pubsub(!toggled_pubsub)}>
+      onClick={() => {
+        if (!(client === null) && client.connected) {
+            setToggled_pubsub(!toggled_pubsub)
+            if (!toggled_pubsub === true) {
+                    client.subscribe("presence", (err) => {
+                        if (!err) {
+                        client.publish("presence", "Hello mqtt");
+                        }
+                    });
+                    client.on("message", (topic, message) => {
+                        // message is Buffer
+                        console.log(message.toString());
+                    });
+
+            } else {
+                client.unsubscribe("presence", (err) => {
+                    if (!err) {
+                        console.log("successfully unsubscribed!")
+                    }
+                });
+
+            }
+        }
+      }}>
       <div className="thumb-pubsub"></div>
       </button>
     </div>

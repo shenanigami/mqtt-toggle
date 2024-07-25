@@ -31,7 +31,9 @@ Some things I learned.
 
 2024-07-24: After a bit of an odyssey, I stumbled upon the mqttjs's client api, specifically [event](https://github.com/mqttjs/MQTT.js?tab=readme-ov-file#event-connect) handling. For this latest commit, the goal was to get some sort of verification of successful connect/disconnect in forms of console logs. For connect, I was able to print the connack packet to the console, for disconnect I used the close event that occurs that is emitted after a disconnect.
 
-Next: Deal with second toggle (pub-sub stuff).
+2024-07-26: The second toggle is for sub/unsub-ing to a "presence" topic. When sub happens, so does publish to the same topic with a message "Hello mqtt" + printing of the received message to console. Sub/unsub can only happen if client is not null and is connected, otherwise the toggle does not toggle.
+
+Next: create a simple subscribing client on esp32 to also subscribe to the "presence" topic and print the message to console.
 
 
 ## React + TypeScript + Vite
